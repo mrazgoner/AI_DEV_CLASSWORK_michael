@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
+import { Student } from '../models/Student';
 import { students } from '../data/students';    
 
 export function getStudents(req: Request, res: Response) {
     res.json(students);
 }
 
-// get a single student by ID
 export function getStudentById(req: Request, res: Response) {
     const id = req.params.id;
     if (typeof id !== 'string') {
@@ -21,7 +21,6 @@ export function getStudentById(req: Request, res: Response) {
     }
 }
 
-// add a new student
 export function postStudent(req: Request, res: Response) {
     const { name, grades } = req.body;
     if (!name || !grades || !Array.isArray(grades)) {
@@ -29,7 +28,7 @@ export function postStudent(req: Request, res: Response) {
         return;
     }
 
-    const newStudent = {
+    const newStudent: Student = {
         id: students.length > 0 ? students[students.length - 1]!.id + 1 : 1,
         name,
         grades

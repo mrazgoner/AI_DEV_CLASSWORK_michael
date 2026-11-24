@@ -1,0 +1,10 @@
+<h2>Students</h2>
+
+<ul>
+    @for (student of students; track student.id) {
+        <li>
+            {{ student.name }} — {{ student.grade }}
+        </li>
+    }
+</ul>
+
