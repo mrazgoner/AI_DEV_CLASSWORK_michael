@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common'; 
 import { Students } from '../students';
 import { Student } from '../../models/Student';
@@ -10,7 +10,7 @@ import { Student } from '../../models/Student';
   styleUrl: './student.scss',
   templateUrl: './student.html',
 })
-export class StudentComponent {
+export class StudentComponent implements OnInit {
    private studentsService = inject(Students);
 
    students: Student[] = [];
@@ -21,3 +21,4 @@ export class StudentComponent {
         });
     }
 }
+
